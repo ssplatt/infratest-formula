@@ -19,7 +19,7 @@ infratest:
       - python-pip
   install:
     git: true
-    pkg: infratest
+    pkg: infratest # should a package be available in the future
     url: https://github.com/ssplatt/saltstack-infratest-module.git
     target: /srv/salt/_modules
     branch: master
