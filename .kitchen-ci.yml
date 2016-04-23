@@ -1,0 +1,28 @@
+# vim: ft=yaml
+---
+driver:
+  name: linode
+
+provisioner:
+  name: salt_solo
+  formula: infratest
+  state_top:
+    base:
+      "*":
+        - infratest
+
+platforms:
+  - name: debian_jessie
+
+suites:
+  - name: default
+
+  - name: custom
+    provisioner:
+      pillars-from-files:
+        infratest.sls: pillar-custom.sls
+      pillars:
+        top.sls:
+          base:
+            "*":
+              - infratest

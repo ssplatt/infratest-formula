@@ -1,0 +1,22 @@
+# vim: ft=yaml
+# Defaults for infratest
+
+infratest:
+  enabled: false
+  run_all: false
+  mockup:
+    enabled: true
+    deps:
+      - git
+      - python-pip
+  install:
+    git: true
+    pkg: infratest
+    url: https://github.com/ssplatt/saltstack-infratest-module.git
+    target: /srv/salt/_modules
+    branch: master
+    user: root
+    deps:
+      from_pip: true
+      pkgs:
+        - testinfra
