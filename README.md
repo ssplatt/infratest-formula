@@ -7,7 +7,7 @@ This formula was initialized with [Saltscaffold](https://github.com/cmarzullo/sa
 
 # Default configuration
 By default, the formula is disabled. When enabled, it will install `git`, `python-pip`, and `testinfra` as dependencies for pulling the `infratest` module down from Github and loading it into Salt.
-```
+```yaml
 # infratest/defaults.yml
 infratest:
   enabled: false
