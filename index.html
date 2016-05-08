@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Infratest-formula by ssplatt</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Infratest-formula</h1>
+          <h2>salt formula for the infratest module</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/ssplatt/infratest-formula/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/ssplatt/infratest-formula/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/ssplatt/infratest-formula" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a id="infratest-formula" class="anchor" href="#infratest-formula" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>infratest-formula</h1>
+
+<p>A <a href="https://github.com/saltstack/salt">Salt</a> formula to install and configure the <a href="https://github.com/ssplatt/saltstack-infratest-module">infratest module</a>.</p>
+
+<p>This formula was initialized with <a href="https://github.com/cmarzullo/saltscaffold">Saltscaffold</a>.</p>
+
+<p><a href="https://asciinema.org/a/3b7exrkl5fnjxsj2szp5ik42e"><img src="https://asciinema.org/a/3b7exrkl5fnjxsj2szp5ik42e.png" alt="asciicast"></a></p>
+
+<h1>
+<a id="default-configuration" class="anchor" href="#default-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default configuration</h1>
+
+<p>By default, the formula is disabled. When enabled, it will install <code>git</code>, <code>python-pip</code>, and <code>testinfra</code> as dependencies for pulling the <code>infratest</code> module down from Github and loading it into Salt.</p>
+
+<div class="highlight highlight-source-yaml"><pre><span class="pl-c"># infratest/defaults.yml</span>
+<span class="pl-s"><span class="pl-ent">infratest:</span></span>
+  <span class="pl-s"><span class="pl-ent">enabled:</span> <span class="pl-c1">false</span></span>
+  <span class="pl-s"><span class="pl-ent">run_all:</span> <span class="pl-c1">false</span></span>
+  <span class="pl-s"><span class="pl-ent">mockup:</span></span>
+    <span class="pl-s"><span class="pl-ent">enabled:</span> <span class="pl-c1">true</span></span>
+    <span class="pl-s"><span class="pl-ent">deps:</span></span>
+      <span class="pl-s">- <span class="pl-s">git</span></span>
+      <span class="pl-s">- <span class="pl-s">python-pip</span></span>
+  <span class="pl-s"><span class="pl-ent">install:</span></span>
+    <span class="pl-s"><span class="pl-ent">git:</span> <span class="pl-c1">true</span></span>
+    <span class="pl-s"><span class="pl-ent">pkg:</span> <span class="pl-s">infratest </span></span><span class="pl-c"># should a package be available in the future</span>
+    <span class="pl-s"><span class="pl-ent">url:</span> <span class="pl-s">https://github.com/ssplatt/saltstack-infratest-module.git</span></span>
+    <span class="pl-s"><span class="pl-ent">target:</span> <span class="pl-s">/srv/salt/_modules</span></span>
+    <span class="pl-s"><span class="pl-ent">branch:</span> <span class="pl-s">master</span></span>
+    <span class="pl-s"><span class="pl-ent">user:</span> <span class="pl-s">root</span></span>
+    <span class="pl-s"><span class="pl-ent">deps:</span></span>
+      <span class="pl-s"><span class="pl-ent">from_pip:</span> <span class="pl-c1">true</span></span>
+      <span class="pl-s"><span class="pl-ent">pkgs:</span></span>
+        <span class="pl-s">- <span class="pl-s">testinfra</span></span></pre></div>
+
+<h1>
+<a id="development-and-testing" class="anchor" href="#development-and-testing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Development and Testing</h1>
+
+<p>Ensure Vagrant, Ruby, and Ruby Gems packages are installed.</p>
+
+<p>(Mac) Install and setup brew:</p>
+
+<pre><code>ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+</code></pre>
+
+<pre><code>brew install cask
+brew cask install vagrant
+</code></pre>
+
+<pre><code>cd &lt;formula dir&gt;
+bundle install
+</code></pre>
+
+<p>or</p>
+
+<pre><code>sudo gem install test-kitchen
+sudo gem install kitchen-vagrant
+sudo gem install kitchen-salt
+</code></pre>
+
+<p>Run a converge on the default configuration:</p>
+
+<pre><code>kitchen converge
+</code></pre>
+
+<h2>
+<a id="test-in-the-cloud" class="anchor" href="#test-in-the-cloud" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test in the Cloud</h2>
+
+<p>Instead of running on a VM locally using Vagrant, you can test the formula on a cloud provider, like Linode. The settings are configured in the <code>.kitchen-ci.yml</code> file.</p>
+
+<p>See the <a href="https://github.com/ssplatt/kitchen-linode">kitchen-linode</a> repository for more details.</p>
+        </section>
+
+        <footer>
+          Infratest-formula is maintained by <a href="https://github.com/ssplatt">ssplatt</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
