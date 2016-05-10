@@ -1,4 +1,6 @@
 # infratest-formula
+[![Build Status](https://travis-ci.org/ssplatt/infratest-formula.svg?branch=master)](https://travis-ci.org/ssplatt/infratest-formula)
+
 A [Salt](https://github.com/saltstack/salt) formula to install and configure the [infratest module](https://github.com/ssplatt/saltstack-infratest-module).
 
 This formula was initialized with [Saltscaffold](https://github.com/cmarzullo/saltscaffold).
