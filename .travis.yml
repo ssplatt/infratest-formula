@@ -1,12 +1,11 @@
-rvm:
-  - 2.3
+sudo: required
 
-sudo: true
+language: ruby
 
 bundler_args: --without='vagrant'
 
-before_script:
-- source < scripts/start_docker.sh
+services:
+  - docker
 
 env:
   matrix:
