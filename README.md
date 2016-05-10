@@ -3,9 +3,11 @@ A [Salt](https://github.com/saltstack/salt) formula to install and configure the
 
 This formula was initialized with [Saltscaffold](https://github.com/cmarzullo/saltscaffold).
 
+[![asciicast](https://asciinema.org/a/3b7exrkl5fnjxsj2szp5ik42e.png)](https://asciinema.org/a/3b7exrkl5fnjxsj2szp5ik42e)
+
 # Default configuration
 By default, the formula is disabled. When enabled, it will install `git`, `python-pip`, and `testinfra` as dependencies for pulling the `infratest` module down from Github and loading it into Salt.
-```
+```yaml
 # infratest/defaults.yml
 infratest:
   enabled: false
@@ -17,7 +19,7 @@ infratest:
       - python-pip
   install:
     git: true
-    pkg: infratest
+    pkg: infratest # should a package be available in the future
     url: https://github.com/ssplatt/saltstack-infratest-module.git
     target: /srv/salt/_modules
     branch: master
