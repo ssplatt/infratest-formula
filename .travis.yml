@@ -8,8 +8,6 @@ services:
   - docker
 
 env:
-  matrix:
-# Split up the test-kitchen run to avoid exceeding 50 minutes:
   - KITCHEN_REGEXP=default
   - KITCHEN_REGEXP=custom
 

@@ -1,11 +1,10 @@
 source "http://rubygems.org"
 
 gem 'rake'
-gem 'berkshelf', '~> 4.0'
 
 group :integration do
   gem 'test-kitchen', '~> 1.4'
-  gem 'kitchen-salt', '~> 0.0.23'
+  gem 'kitchen-salt'
 end
 
 group :vagrant do
@@ -14,7 +13,7 @@ group :vagrant do
 end
 
 group :linode do
-  gem 'kitchen-linode', '~> 0.11'
+  gem 'kitchen-linode'
 end
 
 group :docker do
