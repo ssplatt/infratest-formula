@@ -14,6 +14,6 @@ env:
   - KITCHEN_REGEXP=custom
 
 script:
-- travis_retry bundle exec rake integration:docker [$KITCHEN_REGEXP]
+- bundle exec rake integration:docker $KITCHEN_REGEXP
 
 after_failure: cat docker_daemon.log
