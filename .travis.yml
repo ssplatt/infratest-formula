@@ -8,9 +8,11 @@ services:
   - docker
 
 env:
+  matrix:
   - KITCHEN_REGEXP=default
   - KITCHEN_REGEXP=custom
 
-script: "bundle exec rake integration:docker $KITCHEN_REGEXP"
+script:
+  - bundle exec rake integration:docker ${KITCHEN_REGEXP}
 
 after_failure: cat docker_daemon.log
