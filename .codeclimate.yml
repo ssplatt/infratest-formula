@@ -1,0 +1,29 @@
+---
+engines:
+  fixme:
+    enabled: true
+engines:
+  rubocop:
+    enabled: true
+    #checks:
+    # Rubocop/Metrics/ClassLength:
+    #   enabled: false
+  golint:
+    enabled: true
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - ruby
+        #mass_threshold: 30
+      - javascript
+ratings:
+  paths: []
+exclude_paths:
+- test/
+- spec/**/*
+- "**/vendor/**/*"

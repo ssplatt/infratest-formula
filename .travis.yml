@@ -1,0 +1,20 @@
+rvm:
+  - 2.3
+
+sudo: true
+
+bundler_args: --without='vagrant'
+
+before_script:
+- source < scripts/start_docker.sh
+
+env:
+  matrix:
+# Split up the test-kitchen run to avoid exceeding 50 minutes:
+  - KITCHEN_REGEXP=default
+  - KITCHEN_REGEXP=custom
+
+script:
+- travis_retry bundle exec rake integration:docker [$KITCHEN_REGEXP]
+
+after_failure: cat docker_daemon.log

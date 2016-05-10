@@ -6,4 +6,5 @@
 infratest_mockup_install_deps:
   pkg.installed:
     - pkgs: {{ infratest.mockup.deps }}
+    - reload_modules: true
 {% endif %}

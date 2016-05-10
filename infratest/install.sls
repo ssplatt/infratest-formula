@@ -16,10 +16,6 @@ infratest_install_from_git:
 infratest_install_deps_from_pip_{{ deppkg }}:
   pip.installed:
     - name: {{ deppkg }}
+    - reload_modules: true
 {% endfor %}
 {% endif %}
-
-infratest_sync_modules:
-  module.run:
-    - name: saltutil.sync_modules
-    - refresh: True

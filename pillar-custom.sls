@@ -33,4 +33,3 @@ infratest:
   sysctl:
     'kernel.osrelease':
       value: 3.16.0-4-amd64
-
