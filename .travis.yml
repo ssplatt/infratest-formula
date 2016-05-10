@@ -2,7 +2,7 @@ sudo: required
 
 language: ruby
 
-bundler_args: --without='vagrant'
+bundler_args: --without='vagrant' --without='linode'
 
 services:
   - docker
