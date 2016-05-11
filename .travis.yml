@@ -1,3 +1,7 @@
+addons:
+  code_climate:
+    repo_token: 84558499f32ed83e00b961615a54568499bcf97318699d8fc37babf166392e1f
+
 sudo: required
 
 language: ruby
@@ -14,5 +18,10 @@ env:
 
 script:
   - KITCHEN_LOCAL_YAML=.kitchen-docker.yml kitchen verify ${INSTANCE}
+
+after_script:
+  - docker images
+  - docker ps -a
+  - cat .kitchen/logs/kitchen.log
 
 after_failure: cat docker_daemon.log

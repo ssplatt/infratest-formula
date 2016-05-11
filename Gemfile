@@ -1,7 +1,5 @@
 source "http://rubygems.org"
 
-gem 'rake'
-
 group :integration do
   gem 'test-kitchen', '~> 1.4'
   gem 'kitchen-salt'
@@ -18,4 +16,10 @@ end
 
 group :docker do
   gem 'kitchen-docker', '~> 2.1.0'
+end
+
+group :test do
+  'bundler', '~> 1.3'
+  'rake', '~> 10.4'
+  'codeclimate-test-reporter', '~> 0.5'
 end
