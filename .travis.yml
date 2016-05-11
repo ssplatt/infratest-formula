@@ -18,6 +18,7 @@ env:
 
 script:
   - KITCHEN_LOCAL_YAML=.kitchen-docker.yml kitchen verify ${INSTANCE}
+  - bundle exec rake
 
 after_script:
   - docker images
