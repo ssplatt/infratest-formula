@@ -57,4 +57,4 @@ namespace :integration do
   end
 end
 
-task default: %w(integration:vagrant)
+#task default: %w(integration:vagrant)
