@@ -1,13 +1,12 @@
 source "http://rubygems.org"
 
 group :integration do
-  gem 'test-kitchen', '~> 1.4'
+  gem 'test-kitchen'
   gem 'kitchen-salt'
 end
 
 group :vagrant do
-  gem 'vagrant-wrapper', '~> 2.0'
-  gem 'kitchen-vagrant', '~> 0.18'
+  gem 'kitchen-vagrant'
 end
 
 group :linode do
@@ -15,11 +14,11 @@ group :linode do
 end
 
 group :docker do
-  gem 'kitchen-docker', '~> 2.1.0'
+  gem 'kitchen-docker'
 end
 
 group :test do
-  'bundler', '~> 1.3'
-  'rake', '~> 10.4'
-  'codeclimate-test-reporter', '~> 0.5'
+  gem 'bundler'
+  gem 'rake'
+  gem 'codeclimate-test-reporter'
 end
