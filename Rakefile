@@ -1,29 +1,18 @@
 require 'rspec/core/rake_task'
-require 'rubocop/rake_task'
 require 'kitchen'
 require 'yamllint/rake_task'
 
-
-# Style tests.
-namespace :style do
-  desc 'Run Ruby style checks'
-  RuboCop::RakeTask.new(:ruby)
-  
-  desc 'Run YAML style checks'
-  YamlLint::RakeTask.new(:yaml) do |t|
-    t.paths = %w(
-      *.yaml
-      *.yml
-      .*.yml
-      .*.yaml
-      infratest/**/*.yml
-      infratest/**/*.yaml
-    )
-  end
+desc 'Run YAML style checks'
+YamlLint::RakeTask.new(:yaml) do |t|
+  t.paths = %w(
+    *.yaml
+    *.yml
+    .*.yml
+    .*.yaml
+    infratest/**/*.yml
+    infratest/**/*.yaml
+  )
 end
-
-desc 'Run all style checks'
-task style: ['style:ruby', 'style:yaml']
 
 # Rspec
 desc 'Run Rspec examples'
@@ -62,7 +51,7 @@ namespace :integration do
 end
 
 desc 'Run all tests on Travis'
-task travis: ['style', 'spec', 'integration:docker']
+task travis: ['yaml', 'spec', 'integration:docker']
 
 # Default
-task default: %w(style spec)
+task default: %w(yaml spec)
