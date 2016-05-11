@@ -9,11 +9,15 @@ namespace :style do
   desc 'Run Ruby style checks'
   RuboCop::RakeTask.new(:ruby)
   
-  desc 'Run YAML Lint style checks'
+  desc 'Run YAML style checks'
   YamlLint::RakeTask.new(:yaml) do |t|
     t.paths = %w(
-      **/*.yaml
-      **/*.sls
+      *.yaml
+      *.yml
+      .*.yml
+      .*.yaml
+      infratest/**/*.yml
+      infratest/**/*.yaml
     )
   end
 end
@@ -24,7 +28,6 @@ task style: ['style:ruby', 'style:yaml']
 # Rspec
 desc 'Run Rspec examples'
 RSpec::Core::RakeTask.new(:spec)
-
 
 # Integration tests. Kitchen.ci
 namespace :integration do

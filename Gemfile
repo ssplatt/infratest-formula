@@ -22,5 +22,6 @@ group :test do
   gem 'rake'
   gem 'rspec'
   gem 'yamllint'
+  gem 'rubocop'
   gem 'codeclimate-test-reporter'
 end

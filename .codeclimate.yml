@@ -2,7 +2,6 @@
 engines:
   fixme:
     enabled: true
-engines:
   rubocop:
     enabled: true
   duplication:
