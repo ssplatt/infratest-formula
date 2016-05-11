@@ -9,10 +9,10 @@ services:
 
 env:
   matrix:
-  - KITCHEN_REGEXP=default
-  - KITCHEN_REGEXP=custom
+  - INSTANCE=default
+  - INSTANCE=custom
 
 script:
-  - bundle exec rake integration:docker ${KITCHEN_REGEXP}
+  - KITCHEN_LOCAL_YAML=.kitchen-docker.yml kitchen verify ${INSTANCE}
 
 after_failure: cat docker_daemon.log
