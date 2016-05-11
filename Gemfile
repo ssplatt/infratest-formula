@@ -20,5 +20,7 @@ end
 group :test do
   gem 'bundler'
   gem 'rake'
+  gem 'rspec'
+  gem 'yamllint'
   gem 'codeclimate-test-reporter'
 end
